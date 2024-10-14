@@ -13,7 +13,7 @@ function categorizePage(dom) {
         "Social Media": 10,
         "Entertainment (Videos, Streaming, Music)": 10,
         "Articles/Blogs": 7,
-        "Search Result Pages": 7,
+        "Search Result Pages": 6,
         "News": 5,
         "E-Commerce/Shopping": 5,
         "Productivity/Tools": 4,
@@ -128,7 +128,7 @@ function categorizePage(dom) {
     return finalCategory;
 }
 
-const objectMap = (object, mapFn) => {
+function objectMap (object, mapFn) {
     return Object.keys(object).reduce(function(result, key) {
         let v = object[key];
         if (typeof v === 'object' && !Array.isArray(v) && v !== null) {
@@ -142,5 +142,3 @@ const objectMap = (object, mapFn) => {
         return result;
     }, {});
 };
-
-module.exports = objectMap;

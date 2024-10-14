@@ -10,15 +10,37 @@
 
 <body>
     <div class="content">
-        <h2>TAKE VIDEO</h2>
+        <h2 class="top-header">TABS COLLECTOR</h2>
 
-        <div class="button_cont">
-            <button id="get_all_tabs">GET ALL TABS</button>
+        <div class="full-btn">
+            <button id="get_all_tabs">Categorize Tabs</button>
         </div>
-        <!-- <br>
-        <div class="button_cont">
-            <button id="stop_video">STOP VIDEO</button>
-        </div> -->
+
+        <div class="save-load-tab">
+            <button id="save_col_1"> Save Current Tabs To <br /> Collection I  <br /> <span id="col1Count"></span></button>
+
+            <button id="load_col_1"> Load Tabs From <br /> Collection I</button>
+        </div>
+
+        <div class="save-load-tab">
+            <button id="save_col_2"> Save Current Tabs To <br /> Collection II <br /> <span id="col2Count"></span></button>
+
+            <button id="load_col_2"> Load Tabs From <br /> Collection II </button>
+        </div>
+
+        <div class="full-btn">
+            <button id="empty_collections">Empty Tab Collections</button>
+        </div>
+
+        <div class="full-btn">
+            <button id="mute">Mute All Tabs</button>
+        </div>
+
+        <div class="full-btn">
+            <button id="unmute">Unmute Current Tab</button>
+        </div>
+
+        <div id="feedback"></div>
 
     </div>
 

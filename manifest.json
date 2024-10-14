@@ -29,7 +29,8 @@
         "scripting",
         "tabs",
         "activeTab",
-        "tabGroups"
+        "tabGroups",
+        "storage"
     ],
     "version": "1.0.0"
 }
