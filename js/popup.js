@@ -9,6 +9,7 @@ var categories = {
     "Forums/Discussion Boards": [],
     "Programming/Development": [],
     Uncategorized: [],
+    ALX: []
 };
 
 var categoryNames = Object.keys(categories);
@@ -44,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function categorizeTabs() {
-        console.log("starting categories: ", categories);
 
         try {
             // Query all tabs in the current window
@@ -52,17 +52,15 @@ async function categorizeTabs() {
                 currentWindow: true,
             });
 
-            console.log("tabs:", tabs);
-
             for (const tab of tabs) {
                 if (/^http/.test(tab.url)) {
                     const response = await new Promise((resolve, reject) => {
-                        chrome.tabs.sendMessage(tab.id, { action: "request_head_info" }, (response) => {
+                        chrome.tabs.sendMessage(tab.id, { action: "request_dom_info" }, (response) => {
                             if (!chrome.runtime.lastError) {
-                                console.log(`tab ${tab.id} url: ${tab.url} category: ${response}`);
+                                // console.log(`tab ${tab.id} url: ${tab.url} category: ${response}`);
                                 resolve(response);
                             } else {
-                                console.error(chrome.runtime.lastError, `error line 27, url: ${tab.url}`);
+                                // console.error(chrome.runtime.lastError, `error line 63, url: ${tab.url}`);
                                 resolve("Uncategorized");
                             }
                         });
@@ -87,24 +85,22 @@ async function categorizeTabs() {
         } catch (error) {
             console.error("Error creating the tab group:", error);
         } finally {
-            console.log("finally start categories: ", categories);
             // Group tabs by category
             for (const category of categoryNames) {
-                console.log(`${category}: ${categories[category]}`)
+                // console.log(`${category}: ${categories[category]}`)
                 if (categories[category].length > 0) {
                     let groupId = await chrome.tabs.group({
                         tabIds: categories[category],
                     });
 
-                    console.log("Group created with ID:", groupId);
+                    // console.log("Group created with ID:", groupId);
 
                     if (groupId) {
                         await chrome.tabGroups.update(groupId, { title: category });
-                        console.log(`Tab Group ${groupId} renamed to ${category}`);
+                        // console.log(`Tab Group ${groupId} renamed to ${category}`);
                     }
                 }
             }
-            console.log("ending categories: ", categories);
             showFeedback("Tabs have been categorized successfully!");
         }
 }
@@ -233,18 +229,11 @@ function updateSavedTabsCount(setName, count) {
     }
 }
 
-function toggleDarkMode() {
-    document.body.classList.toggle('dark-mode');
-    const isDarkMode = document.body.classList.contains('dark-mode');
-    chrome.storage.sync.set({ 'darkMode': isDarkMode });
-}
-
 function muteAllTabsInCurrentWindow() {
     chrome.tabs.query({ currentWindow: true }, async (tabs) => {
         for (let tab of tabs) {
             if (!tab.mutedInfo.muted) {
                 await chrome.tabs.update(tab.id, { muted: true });
-                console.log(`Tab ${tab.id} is now muted.`);
             }
         }
         showFeedback(`Muted all tabs in the current window.`);
@@ -257,7 +246,6 @@ function unmuteCurrentTab() {
             let currentTab = tabs[0];
             if (currentTab.mutedInfo.muted) {
                 chrome.tabs.update(currentTab.id, { muted: false }, () => {
-                    console.log(`Tab ${currentTab.id} is now unmuted.`);
                     showFeedback(`Unmuted the current tab.`);
                 });
             } else {
