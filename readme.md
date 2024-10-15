@@ -45,7 +45,7 @@ The extension automatically categorizes tabs into the following categories:
 
 2. Navigate to the project directory:
     ```
-    cd chrome-tab-categorizer
+    cd Tabs-Collector
     ```
 
 3. Load the extension in Chrome:
