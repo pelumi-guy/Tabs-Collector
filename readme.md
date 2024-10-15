@@ -1,5 +1,5 @@
 # TABS COLLECTOR
-<p style="text-align: center;">
+<p align="center">
  <img src="./images/icon-128x128.png" alt="TabS Collector Icon  "/>
 </p>
 
