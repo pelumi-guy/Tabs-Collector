@@ -15,6 +15,7 @@ This Chrome extension helps manage and organize your browsing experience by cate
 
 ### Categories
 The extension automatically categorizes tabs into the following categories:
+- ALX
 - Social Media
 - News
 - E-Commerce/Shopping
@@ -48,10 +49,10 @@ The extension automatically categorizes tabs into the following categories:
     ```
 
 3. Load the extension in Chrome:
-- Open Chrome and navigate to `chrome://extensions/`.
-- Enable **Developer mode** by toggling the switch in the top right corner.
-- Click **Load unpacked** and select the project directory.
-- The extension will now appear in your Chrome extensions bar. You can pin it for quick access.
+    - Open Chrome and navigate to `chrome://extensions/`.
+    - Enable **Developer mode** by toggling the switch in the top right corner.
+    - Click **Load unpacked** and select the project directory.
+    - The extension will now appear in your Chrome extensions bar. You can pin it for quick access.
 
 ### Usage
 
